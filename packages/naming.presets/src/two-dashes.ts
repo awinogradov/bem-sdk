@@ -1,6 +1,6 @@
-'use strict';
+import { INamingConvention } from './types';
 
-module.exports = {
+export const twoDashes: INamingConvention = {
     delims: {
         elem: '__',
         mod: { name: '--', val: '_' }
