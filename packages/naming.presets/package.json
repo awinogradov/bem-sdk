@@ -32,13 +32,19 @@
   "engines": {
     "node": ">= 4.0"
   },
-  "main": "index.js",
-  "typings": "index.d.ts",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "typings": "typings/index.d.ts",
   "files": [
     "*.js",
     "index.d.ts"
   ],
   "scripts": {
+    "build:cjs": "tsc --module commonjs --outDir lib",
+    "build:es": "tsc --module es2015 --outDir es",
+    "build:typings": "tsc --emitDeclarationOnly --declaration --declarationDir typings",
+    "build": "npm run clean && npm run build:cjs && npm run build:es && npm run build:typings",
+    "clean": "rm -rf lib es typings",
     "test": "nyc mocha"
   }
 }
